@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Şık Geri Sayım</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+      }
+
+      .countdown-box {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: none;
+      }
+
+      .countdown-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+      }
+
+      .countdown-number {
+        font-weight: 700;
+        color: #fff;
+        -webkit-background-clip: text;
+        background-clip: text;
+        transition: all 0.3s ease;
+        display: inline-block;
+        min-width: 1.2em;
+        text-align: center;
+        position: relative;
+      }
+
+      .countdown-number.changing {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+
+      .countdown-number.new {
+        transform: translateY(-10px);
+        opacity: 0;
+        animation: slideDown 0.3s ease forwards;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-10px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .countdown-label {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: 'Quicksand', sans-serif;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .main-title {
+        font-size: 3.5rem;
+        font-weight: 300;
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+        font-family: 'Quicksand', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center text-white">
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+      <source src="2257259-hd_1920_1080_20fps.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 text-center animate-fade-in">
+      <h1 class="main-title">Ahmediye Külliyesi 4. Devre</h1>
+
+      <p class="subtitle"></p>
+
+      <!-- Countdown -->
+      <div class="grid grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div class="countdown-box rounded-lg p-6">
+          <div id="days" class="countdown-number text-5xl md:text-6xl mb-2">
+            00
+          </div>
+          <div class="countdown-label">Gün</div>
+        </div>
+        <div class="countdown-box rounded-lg p-6">
+          <div id="hours" class="countdown-number text-5xl md:text-6xl mb-2">
+            00
+          </div>
+          <div class="countdown-label">Saat</div>
+        </div>
+        <div class="countdown-box rounded-lg p-6">
+          <div id="minutes" class="countdown-number text-5xl md:text-6xl mb-2">
+            00
+          </div>
+          <div class="countdown-label">Dakika</div>
+        </div>
+        <div class="countdown-box rounded-lg p-6">
+          <div id="seconds" class="countdown-number text-5xl md:text-6xl mb-2">
+            00
+          </div>
+          <div class="countdown-label">Saniye</div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Set the date we're counting down to (1 year from now)
+      const countDownDate = new Date();
+      countDownDate.setFullYear(countDownDate.getFullYear() + 1);
+
+      function updateNumber(element, newValue) {
+        const oldValue = element.textContent;
+        if (oldValue !== newValue) {
+          element.classList.add('changing');
+          setTimeout(() => {
+            element.textContent = newValue;
+            element.classList.remove('changing');
+            element.classList.add('new');
+            setTimeout(() => {
+              element.classList.remove('new');
+            }, 300);
+          }, 150);
+        }
+      }
+
+      // Update the countdown every 1 second
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        // Calculate time units
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the results with smooth transitions
+        updateNumber(
+          document.getElementById('days'),
+          String(days).padStart(2, '0')
+        );
+        updateNumber(
+          document.getElementById('hours'),
+          String(hours).padStart(2, '0')
+        );
+        updateNumber(
+          document.getElementById('minutes'),
+          String(minutes).padStart(2, '0')
+        );
+        updateNumber(
+          document.getElementById('seconds'),
+          String(seconds).padStart(2, '0')
+        );
+
+        // If the countdown is finished
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
