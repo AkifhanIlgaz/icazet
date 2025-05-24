@@ -11,7 +11,24 @@
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      .noto-naskh-arabic {
+        font-family: 'Noto Naskh Arabic', serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1.8rem;
+        line-height: 2;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 1rem 0;
+      }
+
       .video-background {
         position: fixed;
         right: 0;
@@ -39,6 +56,11 @@
         position: relative;
         overflow: hidden;
         box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 120px;
       }
 
       .countdown-box::before {
@@ -60,6 +82,9 @@
         min-width: 1.2em;
         text-align: center;
         position: relative;
+        font-size: 5rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
       }
 
       .countdown-number.changing {
@@ -90,6 +115,8 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         font-family: 'Quicksand', sans-serif;
+        text-align: center;
+        width: 100%;
       }
 
       @keyframes fadeIn {
@@ -108,34 +135,130 @@
       }
 
       .main-title {
-        font-size: 3.5rem;
-        font-weight: 300;
+        font-size: 1.5rem;
+        font-weight: 100;
         -webkit-background-clip: text;
         background-clip: text;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 1rem;
+        font-family: 'Quicksand', sans-serif;
       }
 
       .subtitle {
         color: rgba(255, 255, 255, 0.8);
         font-size: 1.25rem;
-        margin-bottom: 3rem;
         font-family: 'Quicksand', sans-serif;
+        margin-bottom: 2rem;
+      }
+
+      /* Large TV Screen Styles */
+      @media (min-width: 1920px) {
+        .main-title {
+          font-size: 6rem;
+          margin-bottom: 2rem;
+        }
+
+        .subtitle {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .countdown-box {
+          min-height: 200px;
+          padding: 2rem;
+        }
+
+        .countdown-number {
+          font-size: 8rem;
+          margin-bottom: 1rem;
+        }
+
+        .countdown-label {
+          font-size: 1.5rem;
+          letter-spacing: 3px;
+        }
+
+        .container {
+          max-width: 90%;
+        }
+
+        .noto-naskh-arabic {
+          font-size: 2.2rem;
+          line-height: 2.2;
+        }
+      }
+
+      /* Extra Large TV Screen Styles */
+      @media (min-width: 2560px) {
+        .main-title {
+          font-size: 8rem;
+          margin-bottom: 3rem;
+        }
+
+        .subtitle {
+          font-size: 2.5rem;
+          margin-bottom: 5rem;
+        }
+
+        .countdown-box {
+          min-height: 300px;
+          padding: 3rem;
+        }
+
+        .countdown-number {
+          font-size: 12rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 2rem;
+          letter-spacing: 4px;
+        }
+
+        .noto-naskh-arabic {
+          font-size: 2.6rem;
+          line-height: 2.4;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .countdown-number {
+          font-size: 4rem;
+        }
+        .countdown-box {
+          min-height: 100px;
+        }
       }
     </style>
   </head>
   <body class="min-h-screen flex items-center justify-center text-white">
     <!-- Video Background -->
     <video autoplay muted loop class="video-background">
-      <source src="1449846-hd_1906_1080_28fps.mp4" type="video/mp4" />
+      <source src="2257012-uhd_3840_2160_24fps.mp4" type="video/mp4" />
     </video>
     <div class="overlay"></div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 text-center animate-fade-in">
-      <h1 class="main-title">Ahmediye Külliyesi 4. Devre</h1>
+    <!-- Audio Background -->
+    <audio id="seaSound" loop>
+      <source
+        src="Ocean Waves for Deep Sleep (10 Minutes).mp3"
+        type="audio/mpeg"
+      />
+    </audio>
 
-      <p class="subtitle"></p>
+    <!-- Main Content -->
+    <main
+      class="container mx-auto px-4 text-center animate-fade-in flex flex-col items-center justify-center"
+    >
+      <img
+        src="Adsız tasarım.png"
+        alt="Ahmediye Külliyesi Logo"
+        class="w-48 h-auto mb-2 brightness-0 invert"
+      />
+
+      <p class="subtitle">
+        Sizin bu imtihanlarda almış olduğunuz notlar benim Piran'a arz ettiğim
+        kendi notlarımdır.
+      </p>
 
       <!-- Countdown -->
       <div class="grid grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -164,11 +287,57 @@
           <div class="countdown-label">Saniye</div>
         </div>
       </div>
+
+      <div class="flex flex-col gap-8 items-center justify-center">
+        <div class="noto-naskh-arabic" id="arabicText">
+          علم منطغك تعريفنى، موضوعنى، غايه سنى، اوقوديغيمز كتابك إسمنى و مصنفنى
+          يازيكز
+        </div>
+      </div>
     </main>
 
     <script>
-      // Set the date we're counting down to (June 19, 2025)
-      const countDownDate = new Date('2025-06-19T00:00:00');
+      // Arabic texts array
+      const arabicTexts = [
+        '.علم منطغك تعريفنى، موضوعنى، غايه سنى، اوقوديغيمز كتابك إسمنى و مصنفنى يازيكز',
+        '.علم قاﭺ قسمدر؟ تعريفلرى نه لردر',
+        '.لفظك معنايه بالوضع دلالتنك قسملرينى نه لردر؟ ايضاح ايديكز',
+        '.جزئى حقيقى و كلى نك تعريفلرينى يازيب ، برر مثال ويريكز',
+        '.نوع حقيقى يى تعريف ايدوب قسملرينى برر مثال ايله يازيكز',
+        '.جنسى تعريف ايديب قسملرينى برر مثال ايله يازيكز',
+        'فصلى تعريف ايدوب قسملرينى برر مثال ايله يازيكز',
+        'نسب اربعه يي تعداد ايدوب برر مثال ويريكز.',
+        'معرفى (قول شارحى) تعريف ايدوب، قسملرينى يازيكز',
+        'قضيه يى تعريف ايدوب أقسام أوليه سنى يازيكز.',
+        'موضوعى إعتباريله قضيهء حمليه قاج قسمدر؟ و نه لردر؟ إيضاح ايديكز.',
+      ];
+
+      // Function to change Arabic text
+      function changeArabicText() {
+        const arabicElement = document.getElementById('arabicText');
+        const randomIndex = Math.floor(Math.random() * arabicTexts.length);
+        arabicElement.textContent = arabicTexts[randomIndex];
+      }
+
+      // Change text every 10 seconds
+      setInterval(changeArabicText, 10000);
+
+      // Initialize sea sound
+      const seaSound = document.getElementById('seaSound');
+      seaSound.volume = 0.3; // Set initial volume to 30%
+
+      // Play sea sound when user interacts with the page
+      document.addEventListener(
+        'click',
+        () => {
+          seaSound.play().catch((error) => {
+            console.log('Audio playback failed:', error);
+          });
+        },
+        { once: true }
+      );
+
+      const countDownDate = new Date('2025-06-19T10:00:00');
 
       function updateNumber(element, newValue) {
         const oldValue = element.textContent;
