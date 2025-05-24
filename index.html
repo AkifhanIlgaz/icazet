@@ -134,6 +134,25 @@
         animation: fadeIn 1s ease-out forwards;
       }
 
+      @keyframes colorChange {
+        0% {
+          filter: brightness(0);
+        }
+        80% {
+          filter: brightness(0);
+        }
+        90% {
+          filter: brightness(0) invert(1);
+        }
+        100% {
+          filter: brightness(0);
+        }
+      }
+
+      .logo-animation {
+        animation: colorChange 2.5s infinite;
+      }
+
       .main-title {
         font-size: 1.5rem;
         font-weight: 100;
@@ -228,12 +247,22 @@
           min-height: 100px;
         }
       }
+
+      .logo-hidden {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+      }
+
+      .logo-visible {
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
     </style>
   </head>
   <body class="min-h-screen flex items-center justify-center text-white">
     <!-- Video Background -->
     <video autoplay muted loop class="video-background">
-      <source src="2257012-uhd_3840_2160_24fps.mp4" type="video/mp4" />
+      <source src="2254964-hd_1906_1080_30fps.mp4" type="video/mp4" />
     </video>
     <div class="overlay"></div>
 
@@ -252,13 +281,10 @@
       <img
         src="Adsız tasarım.png"
         alt="Ahmediye Külliyesi Logo"
-        class="w-48 h-auto mb-2 brightness-0 invert"
+        class="w-48 h-auto mb-2 brightness-0 invert logo-image logo-hidden"
       />
 
-      <p class="subtitle">
-        Sizin bu imtihanlarda almış olduğunuz notlar benim Piran'a arz ettiğim
-        kendi notlarımdır.
-      </p>
+      <p class="subtitle">Muhabbetsiz muvaffakiyet icat edilmemiştir.</p>
 
       <!-- Countdown -->
       <div class="grid grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -310,6 +336,7 @@
         'معرفى (قول شارحى) تعريف ايدوب، قسملرينى يازيكز',
         'قضيه يى تعريف ايدوب أقسام أوليه سنى يازيكز.',
         'موضوعى إعتباريله قضيهء حمليه قاج قسمدر؟ و نه لردر؟ إيضاح ايديكز.',
+        'شكل نه يه  ده نير؟ اشكال اربعه يى بيان ايديكز',
       ];
 
       // Function to change Arabic text
@@ -321,6 +348,28 @@
 
       // Change text every 10 seconds
       setInterval(changeArabicText, 10000);
+
+      // Logo visibility toggle
+
+      // Get video element
+      const video = document.querySelector('.video-background');
+
+      // Sync logo with video
+      video.addEventListener('timeupdate', function (e) {
+        // Get current video time
+        const currentTime = video.currentTime;
+
+        // Make logo visible between 1.7 and 2.33 seconds
+        if (currentTime >= 1.7 && currentTime <= 2.33) {
+          const logo = document.querySelector('.logo-image');
+          logo.classList.remove('logo-hidden');
+          logo.classList.add('logo-visible');
+        } else {
+          const logo = document.querySelector('.logo-image');
+          logo.classList.remove('logo-visible');
+          logo.classList.add('logo-hidden');
+        }
+      });
 
       // Initialize sea sound
       const seaSound = document.getElementById('seaSound');
