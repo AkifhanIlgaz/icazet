@@ -353,7 +353,7 @@
       // Logo visibility toggle
 
       // Get video element
-      const video = document.querySelector(".video-background");
+      // const video = document.querySelector(".video-background");
 
       // Sync logo with video
       // video.addEventListener("timeupdate", function (e) {
@@ -371,21 +371,6 @@
       //     logo.classList.add("logo-hidden");
       //   }
       // });
-
-      // Initialize sea sound
-      const seaSound = document.getElementById("seaSound");
-      seaSound.volume = 0.3; // Set initial volume to 30%
-
-      // Play sea sound when user interacts with the page
-      document.addEventListener(
-        "click",
-        () => {
-          seaSound.play().catch((error) => {
-            console.log("Audio playback failed:", error);
-          });
-        },
-        { once: true }
-      );
 
       const countDownDate = new Date("2025-06-19T10:00:00");
 
