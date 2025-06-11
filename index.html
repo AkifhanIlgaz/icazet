@@ -20,7 +20,7 @@
     />
     <style>
       .noto-naskh-arabic {
-        font-family: 'Noto Naskh Arabic', serif;
+        font-family: "Noto Naskh Arabic", serif;
         font-optical-sizing: auto;
         font-weight: 500;
         font-style: normal;
@@ -65,7 +65,7 @@
       }
 
       .countdown-box::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -115,7 +115,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-family: 'Quicksand', sans-serif;
+        font-family: "Quicksand", sans-serif;
         text-align: center;
         width: 100%;
       }
@@ -160,13 +160,13 @@
         -webkit-background-clip: text;
         background-clip: text;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: 'Quicksand', sans-serif;
+        font-family: "Quicksand", sans-serif;
       }
 
       .subtitle {
         color: rgba(255, 255, 255, 0.8);
         font-size: 1.25rem;
-        font-family: 'Quicksand', sans-serif;
+        font-family: "Quicksand", sans-serif;
         margin-bottom: 2rem;
       }
 
@@ -263,7 +263,7 @@
   <body class="min-h-screen flex items-center justify-center text-white">
     <!-- Video Background -->
     <video autoplay muted loop class="video-background">
-      <source src="2254964-hd_1906_1080_30fps.mp4" type="video/mp4" />
+      <source src="9341351-uhd_3840_2160_24fps.mp4" type="video/mp4" />
     </video>
     <div class="overlay"></div>
 
@@ -282,12 +282,10 @@
       <img
         src="Adsız tasarım.png"
         alt="Ahmediye Külliyesi Logo"
-        class="w-72 h-auto mb-2 brightness-0 invert logo-image logo-hidden"
+        class="w-72 h-auto mb-2 brightness-0 invert logo-image logo-visible"
       />
 
-      <p class="subtitle">
-        Bana yıldırımları havada yakalayacak kadrolar lazım.
-      </p>
+      <p class="subtitle">Güzel günler hızlı geçer.</p>
 
       <!-- Countdown -->
       <div class="grid grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -328,23 +326,23 @@
     <script>
       // Arabic texts array
       const arabicTexts = [
-        '.علم منطغك تعريفنى، موضوعنى، غايه سنى، اوقوديغيمز كتابك إسمنى و مصنفنى يازيكز',
-        '.علم قاﭺ قسمدر؟ تعريفلرى نه لردر',
-        '.لفظك معنايه بالوضع دلالتنك قسملرينى نه لردر؟ ايضاح ايديكز',
-        '.جزئى حقيقى و كلى نك تعريفلرينى يازيب ، برر مثال ويريكز',
-        '.نوع حقيقى يى تعريف ايدوب قسملرينى برر مثال ايله يازيكز',
-        '.جنسى تعريف ايديب قسملرينى برر مثال ايله يازيكز',
-        'فصلى تعريف ايدوب قسملرينى برر مثال ايله يازيكز',
-        'نسب اربعه يي تعداد ايدوب برر مثال ويريكز.',
-        'معرفى (قول شارحى) تعريف ايدوب، قسملرينى يازيكز',
-        'قضيه يى تعريف ايدوب أقسام أوليه سنى يازيكز.',
-        'موضوعى إعتباريله قضيهء حمليه قاج قسمدر؟ و نه لردر؟ إيضاح ايديكز.',
-        'شكل نه يه  ده نير؟ اشكال اربعه يى بيان ايديكز',
+        ".علم منطغك تعريفنى، موضوعنى، غايه سنى، اوقوديغيمز كتابك إسمنى و مصنفنى يازيكز",
+        ".علم قاﭺ قسمدر؟ تعريفلرى نه لردر",
+        ".لفظك معنايه بالوضع دلالتنك قسملرينى نه لردر؟ ايضاح ايديكز",
+        ".جزئى حقيقى و كلى نك تعريفلرينى يازيب ، برر مثال ويريكز",
+        ".نوع حقيقى يى تعريف ايدوب قسملرينى برر مثال ايله يازيكز",
+        ".جنسى تعريف ايديب قسملرينى برر مثال ايله يازيكز",
+        "فصلى تعريف ايدوب قسملرينى برر مثال ايله يازيكز",
+        "نسب اربعه يي تعداد ايدوب برر مثال ويريكز.",
+        "معرفى (قول شارحى) تعريف ايدوب، قسملرينى يازيكز",
+        "قضيه يى تعريف ايدوب أقسام أوليه سنى يازيكز.",
+        "موضوعى إعتباريله قضيهء حمليه قاج قسمدر؟ و نه لردر؟ إيضاح ايديكز.",
+        "شكل نه يه  ده نير؟ اشكال اربعه يى بيان ايديكز",
       ];
 
       // Function to change Arabic text
       function changeArabicText() {
-        const arabicElement = document.getElementById('arabicText');
+        const arabicElement = document.getElementById("arabicText");
         const randomIndex = Math.floor(Math.random() * arabicTexts.length);
         arabicElement.textContent = arabicTexts[randomIndex];
       }
@@ -355,52 +353,52 @@
       // Logo visibility toggle
 
       // Get video element
-      const video = document.querySelector('.video-background');
+      const video = document.querySelector(".video-background");
 
       // Sync logo with video
-      video.addEventListener('timeupdate', function (e) {
-        // Get current video time
-        const currentTime = video.currentTime;
+      // video.addEventListener("timeupdate", function (e) {
+      //   // Get current video time
+      //   const currentTime = video.currentTime;
 
-        // Make logo visible between 1.7 and 2.33 seconds
-        if (currentTime >= 1.7 && currentTime <= 2.33) {
-          const logo = document.querySelector('.logo-image');
-          logo.classList.remove('logo-hidden');
-          logo.classList.add('logo-visible');
-        } else {
-          const logo = document.querySelector('.logo-image');
-          logo.classList.remove('logo-visible');
-          logo.classList.add('logo-hidden');
-        }
-      });
+      //   // Make logo visible between 1.7 and 2.33 seconds
+      //   if (currentTime >= 1.7 && currentTime <= 2.33) {
+      //     const logo = document.querySelector(".logo-image");
+      //     logo.classList.remove("logo-hidden");
+      //     logo.classList.add("logo-visible");
+      //   } else {
+      //     const logo = document.querySelector(".logo-image");
+      //     logo.classList.remove("logo-visible");
+      //     logo.classList.add("logo-hidden");
+      //   }
+      // });
 
       // Initialize sea sound
-      const seaSound = document.getElementById('seaSound');
+      const seaSound = document.getElementById("seaSound");
       seaSound.volume = 0.3; // Set initial volume to 30%
 
       // Play sea sound when user interacts with the page
       document.addEventListener(
-        'click',
+        "click",
         () => {
           seaSound.play().catch((error) => {
-            console.log('Audio playback failed:', error);
+            console.log("Audio playback failed:", error);
           });
         },
         { once: true }
       );
 
-      const countDownDate = new Date('2025-06-19T10:00:00');
+      const countDownDate = new Date("2025-06-19T10:00:00");
 
       function updateNumber(element, newValue) {
         const oldValue = element.textContent;
         if (oldValue !== newValue) {
-          element.classList.add('changing');
+          element.classList.add("changing");
           setTimeout(() => {
             element.textContent = newValue;
-            element.classList.remove('changing');
-            element.classList.add('new');
+            element.classList.remove("changing");
+            element.classList.add("new");
             setTimeout(() => {
-              element.classList.remove('new');
+              element.classList.remove("new");
             }, 300);
           }, 150);
         }
@@ -421,29 +419,29 @@
 
         // Display the results with smooth transitions
         updateNumber(
-          document.getElementById('days'),
-          String(days).padStart(2, '0')
+          document.getElementById("days"),
+          String(days).padStart(2, "0")
         );
         updateNumber(
-          document.getElementById('hours'),
-          String(hours).padStart(2, '0')
+          document.getElementById("hours"),
+          String(hours).padStart(2, "0")
         );
         updateNumber(
-          document.getElementById('minutes'),
-          String(minutes).padStart(2, '0')
+          document.getElementById("minutes"),
+          String(minutes).padStart(2, "0")
         );
         updateNumber(
-          document.getElementById('seconds'),
-          String(seconds).padStart(2, '0')
+          document.getElementById("seconds"),
+          String(seconds).padStart(2, "0")
         );
 
         // If the countdown is finished
         if (distance < 0) {
           clearInterval(x);
-          document.getElementById('days').textContent = '00';
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          document.getElementById('seconds').textContent = '00';
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
         }
       }, 1000);
     </script>
